@@ -4,43 +4,35 @@ body{
 
 .container{
   display: flex;
+  flex: 1;
   flex-direction: column;
-  justify-content: space-between;
-  align-content: space-between;
-  height: 100%;
 }
 
 .header{
-  display: flex;
-  justify-content: center;
   background-color: rgb(138, 23, 71);
 }
-
 h1{
+  text-align: center;
   color: white;
   font-weight: 600;
 }
 
 .content{
   background-color: rgb(167, 166, 177);
-  display: flex;
-  justify-content: center;
   padding: 210px 0;
 }
-
 .content-text{
   text-align: center;
   font-size: 1.5em;
 }
 
 .footer{
-  display: flex;
-  justify-content: center;
+  text-align: center;
   background-color: rgb(138, 23, 71);
   font-size: 1em;
   color: white;
   position: absolute;
   bottom: 0;
   right: 0;
-  left: 0;
+  left: 0; 
 }

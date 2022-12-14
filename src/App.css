@@ -1,35 +1,40 @@
-body{
+body {
   margin: 0;
 }
 
-.container{
+.container {
   display: flex;
   flex: 1;
   flex-direction: column;
 }
 
-.header{
+.header {
   background-color: rgb(138, 23, 71);
 }
-h1{
+h1 {
   text-align: center;
   color: white;
   font-weight: 600;
 }
 
-.content{
+.content {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0 60px;
   height: calc(100vh - 138px);
   background-color: rgb(167, 166, 177); 
 }
-.content-text{
+.content-text {
   text-align: center;
-  font-size: 30px;
+  font-size: 32px;
 }
 
-.footer{
+.movies {
+  font-size: 20px;
+}
+
+.footer {
   position: absolute;
   bottom: 0;
   right: 0;

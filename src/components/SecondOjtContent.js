@@ -9,7 +9,7 @@ const Content = ({ moviesName }) => {
     return (
         <div className="content">
             <p className="content-text">{title}</p>
-            <ul>
+            <ul className="movies">
                 {
                     moviesName.map((name, index) => {
                         return (

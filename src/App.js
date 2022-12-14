@@ -4,11 +4,21 @@ import Content from './components/SecondOjtContent';
 import Footer from './components/Footer';
 import './App.css';
 
+const movies = [
+    "Mone Swel",
+    "ME",
+    "Nga Duu",
+    "Mystery of Burma",
+    "Phoe Shate",
+    "Mudras Calling",
+    "Deception"
+]
+
 function App() {
     return(
         <div className='container'>
             <Header name="OJT Project 2"/>
-            <Content/>
+            <Content moviesName={movies}/>
             <Footer/>
         </div>
     )

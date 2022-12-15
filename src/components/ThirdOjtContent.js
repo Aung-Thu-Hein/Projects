@@ -44,6 +44,11 @@ const Button = props => {
 }
 
 const Content = () => {
+
+    const initialValues = {}
+
+
+
     return (
         <div className="content">
             <Form className="form">
@@ -60,7 +65,7 @@ const Content = () => {
                     <Form.Control type="url" className="input-field" />
                 </Form.Group>
                 <Form.Group className="form-field">
-                    <Label labelName="Phone Number" className="label"></Label>
+                    <Label labelName="Phone Number" className="label" />
                     <input css={inputText} />
                 </Form.Group>
                 <Form.Group className="form-field button-field">

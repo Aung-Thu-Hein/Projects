@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
-import Content from './components/SecondOjtContent';
+import Content from './components/ThirdOjtContent';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -18,7 +18,7 @@ function App() {
     return(
         <div className='container'>
             <Header name="OJT Project 2"/>
-            <Content moviesName={movies}/>
+            <Content/>
             <Footer/>
         </div>
     )

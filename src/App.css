@@ -34,7 +34,7 @@ h1 {
   flex-direction: row;
   justify-content: space-around;
   align-items: center ;
-  margin: 48px 0px;
+  margin: 48px 80px;
 }
 .input-field {
   padding: 7px;

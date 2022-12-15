@@ -1,36 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { jsx, css } from '@emotion/react'
-import React from "react";
-// import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import styled from '@emotion/styled'
 import '../../src/App.css';
-
-// const Input = styled.input`
-//     padding: 7px;
-//     width: 250px; 
-//     border: 1.5px solid;    
-// `;
-
-// const Label = styled.label`
-//     font-size: 18px;
-//     font-weight: 600;
-//`;
-
-// const Input = props => {
-//     return(
-//         <input 
-//         css={{
-//             padding: 7,
-//             width: 250,
-//             borderWidth: 1.5,
-//             borderStyle: solid, 
-//         }}
-//         type="number"
-//         {...props}
-//     />
-//     )
-// }
 
 const inputText = css({
     padding: 7,

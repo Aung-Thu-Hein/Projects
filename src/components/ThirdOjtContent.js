@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Stack from 'react-bootstrap/Stack';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useState } from 'react';
 import '../../src/App.css';
 
 const inputText = css({
@@ -21,6 +22,7 @@ const Label = props => {
                 fontSize: 18,
                 fontWeight: 600,
                 color: 'black',
+                width: 128,
             }}>
             {props.labelName}
         </label>
@@ -40,7 +42,7 @@ const Button = props => {
                 borderRadius: 4,
                 fontSize: 18,
                 fontWeight: 600,
-            }} 
+            }}
             type="submit"
             disabled={props.isDisabled}
         >
@@ -81,6 +83,7 @@ const Content = () => {
         email: "",
         url: "",
         phoneNumber: "",
+        empty: true,
     }
 
     return (
@@ -147,20 +150,21 @@ const Content = () => {
                                 </Form.Control.Feedback>
                             </Stack>
                         </Form.Group>
-                        <Form.Group className="form-field">
-                            <Form.Label className="label">Phone Number</Form.Label>
+                        <Form.Group className='form-field'>
+                            <Label labelName="Phone Number" />
                             <Stack>
-                                <Form.Control
-                                    className="input-field"
-                                    type="text"
-                                    name="phoneNumber"
-                                    value={values.phoneNumber}
-                                    onChange={handleChange}
-                                    isValid={touched.phoneNumber && !errors.phoneNumber}
-                                />
-                                <Form.Control.Feedback type="invalid" className='error-text'>
-                                    {errors.phoneNumber}
-                                </Form.Control.Feedback>
+                            <input
+                                css={inputText}
+                                className="input-field"
+                                type="text"
+                                name="phoneNumber"
+                                value={values.phoneNumber}
+                                onChange={handleChange}
+                                isValid={touched.phoneNumber && !errors.phoneNumber}
+                            />
+                            <div className='error-text'>
+                                {errors.phoneNumber}
+                            </div>
                             </Stack>
                         </Form.Group>
                         <Form.Group className="form-field button-field">

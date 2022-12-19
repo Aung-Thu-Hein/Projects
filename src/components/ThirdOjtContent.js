@@ -76,7 +76,7 @@ const schema = Yup.object().shape({
         .required("Phone number is required"),
 })
 
-const Content = () => {
+const ThirdOjtContent = () => {
 
     const initialValues = {
         name: "",
@@ -178,4 +178,4 @@ const Content = () => {
     )
 }
 
-export default Content;
+export default ThirdOjtContent;

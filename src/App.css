@@ -1,8 +1,23 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   margin: 0;
+}
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.button {
+  background-color: rgb(109, 31, 68) !important;
+  border-color: rgb(109, 31, 68) !important ;
 }
 
 .header {
@@ -10,16 +25,23 @@
 }
 h1 {
   text-align: center;
-  color: white;
+  color: rgb(32, 30, 30);
   font-weight: 600;
+}
+
+.firstojtcontent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
 }
 
 .content {
   display: flex;
   flex: 1;
   flex-direction: column;
+  justify-content: center;
   margin: 0 60px;
-  background-color: rgb(167, 166, 177); 
 }
 .content-text {
   text-align: center;

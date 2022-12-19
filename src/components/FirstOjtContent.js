@@ -1,13 +1,13 @@
 import React from "react";
 import '../../src/App.css';
 
-const Content = () => {
+const FirstOjtContent = () => {
     return(
-        <div className="content">
+        <div className="firstojtcontent">
             <p className="content-text">Hello my friend...</p>
         </div>
         
     )
 }
 
-export default Content;
+export default FirstOjtContent;

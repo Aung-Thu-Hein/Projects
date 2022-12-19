@@ -2,12 +2,12 @@ import React from "react";
 import { useState } from "react";
 import '../../src/App.css';
 
-const Content = ({ moviesName }) => {
+const SecondOjtContent = ({ moviesName }) => {
 
     const [title, setTitle] = useState("Welcome from Movies Lists...");
 
     return (
-        <div className="content">
+        <div className="secondcontent">
             <p className="content-text">{title}</p>
             <ul className="movies">
                 {
@@ -22,4 +22,4 @@ const Content = ({ moviesName }) => {
     )
 }
 
-export default Content;
+export default SecondOjtContent;

@@ -1,6 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { jsx, css } from '@emotion/react'
 import Form from 'react-bootstrap/Form';
+import Stack from 'react-bootstrap/Stack';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import { useState } from 'react';
 import '../../src/App.css';
 
@@ -40,129 +43,140 @@ const Button = props => {
                 fontWeight: 600,
                 backgroundColor: '#8a1747',
                 color: '#fff'
-            }}>
+            }}
+            type="submit"
+            disabled={props.isDisabled}
+        >
             {props.buttonName}
         </button>
     )
 }
 
-const Content = () => {
+const schema = Yup.object().shape({
+
+    name: Yup
+        .string()
+        .required("Name is required"),
+
+    email: Yup
+        .string()
+        .email("Invalid Email")
+        .required("Email is required"),
+
+    url: Yup.string()
+        .matches(
+            /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+            'Enter correct url!'
+        )
+        .required('Enter Url'),
+
+    phoneNumber: Yup
+        .string()
+        .matches(/^\d+$/, 'Enter number only')
+        .min(11, ({ min }) => `Invalid phone number`)
+        .required("Phone number is required"),
+})
+
+const ThirdOjtContent = () => {
 
     const initialValues = {
         name: "",
         email: "",
         url: "",
-        phNumber: "",
+        phoneNumber: "",
+        empty: true,
     }
-    const [formValues, setFormValues] = useState(initialValues);
-    const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormValues({ ...formValues, [name]: value });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setFormErrors(validate(formValues));
-        setIsSubmit(true);
-    }
-
-    const validate = (values) => {
-        const error = {};
-        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-        const regexUrl = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
-        const regexNumber = /^\d+$/;
-
-        if (!values.name) {
-            error.name = "Name is required";
-        }
-
-        if (!values.email) {
-            error.email = "Email is required";
-        } else if (!regexEmail.test(values.email)) {
-            error.email = "Invalid email format";
-        }
-
-        if (!values.url) {
-            error.url = "Url is required";
-        } else if (!regexUrl.test(values.url)) {
-            error.url = "Invalid url format";
-        }
-
-        if (!values.phNumber) {
-            error.phNumber = "Phone number is required";
-        } else if (!regexNumber.test(values.phNumber)) {
-            error.phNumber = "Invalid number format";
-        }
-
-        return error;
-    }
-
 
     return (
         <div className="content">
-            <Form className="form" onSubmit={handleSubmit}>
-                <Form.Group className="form-field">
-                    <Form.Label className="label">Name</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name="name"
-                        className="input-field"
-                        value={formValues.name}
-                        onChange={handleChange}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                        {formErrors.name}
-                    </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="form-field">
-                    <Form.Label className="label">Email</Form.Label>
-                    <Form.Control
-                        type="email"
-                        name="email"
-                        className="input-field"
-                        value={formValues.email}
-                        onChange={handleChange}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                        {formErrors.email}
-                    </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="form-field">
-                    <Form.Label className="label">Url</Form.Label>
-                    <Form.Control
-                        type="url"
-                        name="url"
-                        className="input-field"
-                        value={formValues.url}
-                        onChange={handleChange}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                        {formErrors.url}
-                    </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="form-field">
-                    <Label labelName="Phone Number" className="label" />
-                    <input
-                        type="text"
-                        name="phNumber"
-                        css={inputText}
-                        value={formValues.phNumber}
-                        onChange={handleChange}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                        {formErrors.phNumber}
-                    </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="form-field button-field">
-                    <Button buttonName="Cancle" />
-                    <Button buttonName="Confirm" />
-                </Form.Group>
-            </Form>
+            <Formik
+                validationSchema={schema}
+                onSubmit={console.log}
+                initialValues={initialValues}
+            >
+                {({
+                    handleSubmit,
+                    handleChange,
+                    values,
+                    touched,
+                    isValid,
+                    errors,
+                }) => (
+                    <Form className="form" noValidate onSubmit={handleSubmit}>
+                        <Form.Group className="form-field">
+                            <Form.Label className="label">Name</Form.Label>
+                            <Stack>
+                                <Form.Control
+                                    className="input-field"
+                                    type="text"
+                                    name="name"
+                                    value={values.name}
+                                    onChange={handleChange}
+                                    isValid={touched.name && !errors.name}
+                                />
+                                <Form.Control.Feedback type="invalid" className='error-text'>
+                                    {errors.name}
+                                </Form.Control.Feedback>
+                            </Stack>
+                        </Form.Group>
+                        <Form.Group className="form-field">
+                            <Form.Label className="label">Email</Form.Label>
+                            <Stack>
+                                <Form.Control
+                                    className="input-field"
+                                    type="email"
+                                    name="email"
+                                    value={values.email}
+                                    onChange={handleChange}
+                                    isValid={touched.email && !errors.email}
+                                />
+                                <Form.Control.Feedback type="invalid" className='error-text'>
+                                    {errors.email}
+                                </Form.Control.Feedback>
+                            </Stack>
+                        </Form.Group>
+                        <Form.Group className="form-field">
+                            <Form.Label className="label">Url</Form.Label>
+                            <Stack>
+                                <Form.Control
+                                    className="input-field"
+                                    type="url"
+                                    name="url"
+                                    value={values.url}
+                                    onChange={handleChange}
+                                    isValid={touched.url && !errors.url}
+                                />
+                                <Form.Control.Feedback type="invalid" className='error-text'>
+                                    {errors.url}
+                                </Form.Control.Feedback>
+                            </Stack>
+                        </Form.Group>
+                        <Form.Group className='form-field'>
+                            <Label labelName="Phone Number" />
+                            <Stack>
+                            <input
+                                css={inputText}
+                                className="input-field"
+                                type="text"
+                                name="phoneNumber"
+                                value={values.phoneNumber}
+                                onChange={handleChange}
+                                isValid={touched.phoneNumber && !errors.phoneNumber}
+                            />
+                            <div className='error-text'>
+                                {errors.phoneNumber}
+                            </div>
+                            </Stack>
+                        </Form.Group>
+                        <Form.Group className="form-field button-field">
+                            <Button buttonName="Cancle" />
+                            <Button buttonName="Confirm" isDisabled={!isValid} />
+                        </Form.Group>
+                    </Form>
+                )}
+            </Formik>
         </div>
     )
 }
 
-export default Content;
+export default ThirdOjtContent;

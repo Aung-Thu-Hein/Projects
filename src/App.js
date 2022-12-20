@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Header from './components/Header';
+import Content from './components/ThirdOjtContent';
+import Footer from './components/Footer';
+
+const movies = [
+    "Mone Swel",
+    "ME",
+    "Nga Duu",
+    "Mystery of Burma",
+    "Phoe Shate",
+    "Mudras Calling",
+    "Deception"
+]
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return(
+        <div className='container'>
+            <Header name="OJT Project 2"/>
+            <Content/>
+            <Footer/>
+        </div>
+    )
 }
 
 export default App;

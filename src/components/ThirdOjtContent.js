@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import Stack from 'react-bootstrap/Stack';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useState } from 'react';
 import '../../src/App.css';
 
 const inputText = css({
@@ -23,7 +22,8 @@ const Label = props => {
                 fontWeight: 600,
                 color: 'black',
                 width: 128,
-            }}>
+            }}
+        >
             {props.labelName}
         </label>
     )
@@ -32,17 +32,20 @@ const Label = props => {
 const Button = props => {
     return (
         <button
-            css={{
-                backgroundColor: '#8a1747',
+            css={[
+                {
                 paddingLeft: 50,
                 paddingRight: 50,
                 paddingTop: 15,
                 paddingBottom: 15,
-                borderWidth: 0,
-                borderRadius: 4,
+                borderWidth: 1,
+                borderRadius: 8,
                 fontSize: 18,
-                fontWeight: 600,
-            }}
+                fontWeight: 500,
+                color: '#ffffff',
+                 }, 
+                {backgroundColor : props.isDisabled ? '#a8326b': '#6d1f44'},
+            ]}
             type="submit"
             disabled={props.isDisabled}
         >
@@ -83,7 +86,6 @@ const ThirdOjtContent = () => {
         email: "",
         url: "",
         phoneNumber: "",
-        empty: true,
     }
 
     return (
@@ -168,7 +170,7 @@ const ThirdOjtContent = () => {
                             </Stack>
                         </Form.Group>
                         <Form.Group className="form-field button-field">
-                            <Button buttonName="Cancle" />
+                            <Button buttonName="Cancel" />
                             <Button buttonName="Confirm" isDisabled={!isValid} />
                         </Form.Group>
                     </Form>

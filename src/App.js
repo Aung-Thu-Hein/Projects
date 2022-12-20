@@ -40,7 +40,7 @@
 // export default App;
 
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { Nav, Navbar, Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
@@ -70,16 +70,16 @@ const App = () => {
                     <Container>
                         <Nav className="nav-bar">
                             <NavLink to="/firstOjtContent">
-                                <Button className="button me-5" size="lg">FirstOjtContent</Button>
+                                <Button className="button" >FirstOjtContent</Button>
                             </NavLink>
                             <NavLink to="/secondOjtContent">
-                                <Button className="button me-5" size="lg">SecondOjtContent</Button>
+                                <Button className="button" >SecondOjtContent</Button>
                             </NavLink>
                             <NavLink to="/thirdOjtContent">
-                                <Button className="button me-5" size="lg">ThirdOjtContent</Button>
+                                <Button className="button" >ThirdOjtContent</Button>
                             </NavLink>
                             <NavLink to="/bookList">
-                                <Button className="button me-5" size="lg">Book List</Button>
+                                <Button className="button" >Book List</Button>
                             </NavLink>
                         </Nav>
                     </Container>

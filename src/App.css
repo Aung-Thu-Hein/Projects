@@ -29,20 +29,26 @@ h1 {
   font-weight: 600;
 }
 
-.firstojtcontent {
+.firstcontent {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 85vh;
+  /* min-height: 89.8vh; */
+  background-color: rgb(142, 164, 172);
 }
 
-.content {
+/* .firstcontent-text {
+  align-items: stretch;
+  font-size: 32px;
+} */
+
+/* .content {
   display: flex;
   flex: 1;
   flex-direction: column;
   justify-content: center;
   margin: 0 60px;
-}
+} */
 .content-text {
   text-align: center;
   font-size: 32px;

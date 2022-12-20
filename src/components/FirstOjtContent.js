@@ -3,8 +3,8 @@ import '../../src/App.css';
 
 const FirstOjtContent = () => {
     return(
-        <div className="firstojtcontent">
-            <p className="content-text">Hello my friend...</p>
+        <div className="firstcontent">
+            <p className="firstcontent-text">Hello my friend...</p>
         </div>
         
     )

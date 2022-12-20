@@ -6,11 +6,11 @@
 }
 
 .header {
-  background-color: rgb(138, 23, 71);
+  background-color: #8a1747;
 }
 h1 {
   text-align: center;
-  color: white;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -19,7 +19,7 @@ h1 {
   flex: 1;
   flex-direction: column;
   margin: 0 60px;
-  background-color: rgb(167, 166, 177); 
+  background-color: #a7a6b1; 
 }
 .content-text {
   text-align: center;
@@ -49,7 +49,7 @@ h1 {
 }
 .error-text {
   font-size: 15px;
-  color: red;
+  color: #ff0000;
   font-weight: 400;
 }
 
@@ -60,6 +60,6 @@ h1 {
 .footer {
   text-align: center;
   font-size: 20px;
-  color: white;
-  background-color: rgb(138, 23, 71);
+  color: #ffffff;
+  background-color: #8a1747;
 }

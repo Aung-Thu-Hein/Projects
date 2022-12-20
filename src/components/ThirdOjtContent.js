@@ -51,46 +51,49 @@ const Button = props => {
     )
 }
 
+function Required(attr) {
+    return `${attr} is required`
+}
+
 const schema = Yup.object().shape({
 
     name: Yup
         .string()
-        .required("Name is required"),
+        .required(Required("Name")),
 
     email: Yup
         .string()
         .email("Invalid Email")
-        .required("Email is required"),
+        .required(Required("Email")),
 
     url: Yup.string()
         .matches(
             /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-            'Enter correct url!'
+            'Incorrect Url',
         )
-        .required('Enter Url'),
+        .required(Required("Url")),
 
     phoneNumber: Yup
         .string()
         .matches(/^\d+$/, 'Enter number only')
         .min(11, ({ min }) => `Invalid phone number`)
-        .required("Phone number is required"),
+        .required(Required("Phone Number")),
 })
 
 const Content = () => {
 
-    const initialValues = {
+    const [initialValues, setInitialValues] = useState({
         name: "",
         email: "",
         url: "",
         phoneNumber: "",
-        empty: true,
-    }
+    });
 
     return (
         <div className="content">
             <Formik
                 validationSchema={schema}
-                onSubmit={console.log}
+                onSubmit={(values) => console.log("Form Values: ", values)}
                 initialValues={initialValues}
             >
                 {({
@@ -168,7 +171,7 @@ const Content = () => {
                             </Stack>
                         </Form.Group>
                         <Form.Group className="form-field button-field">
-                            <Button buttonName="Cancle" />
+                            <Button buttonName="Cancel" />
                             <Button buttonName="Confirm" isDisabled={!isValid} />
                         </Form.Group>
                     </Form>

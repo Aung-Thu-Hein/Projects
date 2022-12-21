@@ -114,14 +114,15 @@ tr:nth-child(even) {
 }
 
 .modal-form {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  width: 600px;
+  position: absolute;
+  top: 28%;
+  left: 25%;
+  width: 672px;
   margin: 0 auto;
   font-size: 15px;
   font-weight: 500;
   background-color: #c7c7c7;
+  opacity: .9;
 }
 
 .modal-header {
@@ -162,7 +163,7 @@ tr:nth-child(even) {
 
 .closeButton {
   position: absolute;
-  top: 15px;
+  top: 18px;
   right: 5px;
   width: 100px;
 }
@@ -173,9 +174,10 @@ tr:nth-child(even) {
   top: -10px;
   height: 4px;
   width: 20px;
-  background-color: #1b22a8;
   transform: rotate(-45deg);
   transform-origin: right;
+  background-color: #1b22a8;
+  border-radius: 4px; 
 }
 
 .bottom {
@@ -184,7 +186,12 @@ tr:nth-child(even) {
   top: 5px;
   height: 4px;
   width: 20px;
-  background-color: #1b22a8;
   transform: rotate(45deg);
   transform-origin: right;
+  background-color: #1b22a8;
+  border-radius: 4px; 
+}
+
+.book-name {
+  text-decoration: none;
 }

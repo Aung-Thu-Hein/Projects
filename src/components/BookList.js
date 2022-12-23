@@ -2,9 +2,7 @@ import Table from 'react-bootstrap/Table';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
-import React from 'react';
 import { useState } from "react";
-import { objectTypeInternalSlot } from '@babel/types';
 
 const books = [
     {
@@ -37,97 +35,117 @@ const books = [
     },
 ]
 
-const EditBook = (props) => {
-    console.log(props.book);
+// const EditBook = ({...props}) => {
 
-    const initialValues = { bookName: "", price: "", author: "", date: "", }
+//     const [bookUpdate, setBookUpdate] = useState(props.book)
 
-    const [bookInfo, setBookInfo] = useState(books);
-    const [bookUpdate, setBookUpdate] = useState(props.book)
-    const [obj, setObj] = useState(props.book);
+//     const handleChange = (e) => {
+//         const {name, value} = e.target;
+//         setBookUpdate({...bookUpdate, [name]: value});
+//         console.log("Book Update::: ", bookUpdate);
+//     }
 
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        // const update = bookUpdate.filter((updateBook) => {
-        //     return {...updateBook, [name]: value};
-        // })
-        //setBookUpdate({ [name]: value, ...books })
+//     const handleEdit = (id) => {
+//         console.log(id)
+//     }
 
-        setObj({...obj, [name]: value})
-        console.log(obj);
-    }
+//     return (
+//         <>
+//             <Modal show={props.show} className='modal-form' onHide={props.hide}>
+//                 <Modal.Header className='modal-header'>
+//                     <div className='closeButton' onClick={props.hide}>
+//                         <span className='top'></span>
+//                         <span className='bottom'></span>
+//                     </div>
+//                 </Modal.Header>
+//                 <Modal.Body>
+//                     <Form >
+//                         <Form.Group className='modal-form-field'>
+//                             <Form.Label className='modal-label'>Book Name</Form.Label>
+//                             <Form.Control
+//                                 className='modal-input-field'
+//                                 type="text"
+//                                 name="bookName"
+//                                 defaultValue={props.book.bookName}
+//                                 //onChange={e => {console.log(props.book);console.log(bookUpdate);setBookUpdate({...props.book, bookName: e.target.value}); console.log('change',bookUpdate)}}
+//                                 onChange={handleChange}
+//                             />
+//                          </Form.Group>
+//                         <Form.Group className='modal-form-field'>
+//                             <Form.Label className='modal-label'>Price</Form.Label>
+//                             <Form.Control
+//                                 className='modal-input-field'
+//                                 type="text"
+//                                 name="price"
+//                                 defaultValue={props.book.price}
+//                                 //onChange={e => {setBookUpdate({...props.book, price: e.target.value}); console.log(bookUpdate)}}
+//                                 onChange={handleChange}
 
-    const handleEdit = (id) => {
-        console.log(id)
-    }
-
-    return (
-        <>
-            <Modal show={props.show} className='modal-form' onHide={props.hide}>
-                <Modal.Header className='modal-header'>
-                    <div className='closeButton' onClick={props.hide}>
-                        <span className='top'></span>
-                        <span className='bottom'></span>
-                    </div>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form >
-                        <Form.Group className='modal-form-field'>
-                            <Form.Label className='modal-label'>Book Name</Form.Label>
-                            <Form.Control
-                                className='modal-input-field'
-                                type="text"
-                                name="bookName"
-                                defaultValue={props.book.bookName}
-                                onChange={e => {setBookUpdate({...props.book, bookName: e.target.value}); console.log(bookUpdate)}}/>
-                         </Form.Group>
-                        <Form.Group className='modal-form-field'>
-                            <Form.Label className='modal-label'>Price</Form.Label>
-                            <Form.Control
-                                className='modal-input-field'
-                                type="text"
-                                defaultValue={props.book.price}
-                                onChange={handleChange} />
-                        </Form.Group>
-                        <Form.Group className='modal-form-field'>
-                            <Form.Label className='modal-label'>Author</Form.Label>
-                            <Form.Control
-                                className='modal-input-field'
-                                type="text"
-                                defaultValue={props.book.author}
-                                onChange={handleChange} />
-                        </Form.Group>
-                        <Form.Group className='modal-form-field'>
-                            <Form.Label className='modal-label'>Date</Form.Label>
-                            <Form.Control
-                                className='modal-input-field'
-                                type="text"
-                                defaultValue={props.book.date}
-                                onChange={handleChange} />
-                        </Form.Group>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer className="modal-form-field modal-button-field">
-                    <Button className="modal-button" onClick={props.hide}>Canel</Button>
-                    <Button className="modal-button" onClick={() => handleEdit(props.book.id)}>Confirm</Button>
-                </Modal.Footer>
-            </Modal>
-        </>
-    )
-}
+//                             />
+//                         </Form.Group>
+//                         <Form.Group className='modal-form-field'>
+//                             <Form.Label className='modal-label'>Author</Form.Label>
+//                             <Form.Control
+//                                 className='modal-input-field'
+//                                 type="text"
+//                                 name="author"
+//                                 defaultValue={props.book.author}
+//                                 onChange={handleChange}
+//                                 //onChange={e => {setBookUpdate({...props.book, author: e.target.value}); console.log(bookUpdate)}}
+//                             />
+//                         </Form.Group>
+//                         <Form.Group className='modal-form-field'>
+//                             <Form.Label className='modal-label'>Date</Form.Label>
+//                             <Form.Control
+//                                 className='modal-input-field'
+//                                 type="text"
+//                                 name="date"
+//                                 defaultValue={props.book.date}
+//                                 onChange={handleChange}
+//                                 //onChange={e => {setBookUpdate({...props.book, date: e.target.value}); console.log(bookUpdate)}}
+//                             />
+//                         </Form.Group>
+//                     </Form>
+//                 </Modal.Body>
+//                 <Modal.Footer className="modal-form-field modal-button-field">
+//                     <Button className="modal-button" onClick={props.hide}>Canel</Button>
+//                     <Button className="modal-button" onClick={() => handleEdit(props.book.id)}>Confirm</Button>
+//                 </Modal.Footer>
+//             </Modal>
+//         </>
+//     )
+// }
 
 const BookList = () => {
 
     const [bookInfo, setBookInfo] = useState(books);
     const [show, setShow] = useState(false);
-    const [modalInfo, setModalInfo] = useState([])
+    const [modalInfo, setModalInfo] = useState({});
 
     const handleClose = () => setShow(false);
 
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setModalInfo({...modalInfo, [name]: value});
+        console.log("Update Modal::: ", modalInfo);
+    }
+
     const handleShow = (book) => {
-        console.log(book);
-        setShow(true);
+        console.log("Book :::", book);
         setModalInfo(book);
+        setShow(true);
+        console.log("Modal Info::: ", modalInfo);
+    }
+
+    const handleEdit = (id) => {
+
+        for(let i=0; i<bookInfo.length; i++) {
+            if(modalInfo.id === bookInfo[i].id) {
+                bookInfo[i] = modalInfo;
+            }
+        }
+        console.log("Book Info::: ", bookInfo);
+        handleClose();
     }
 
     return (
@@ -160,11 +178,68 @@ const BookList = () => {
                     }
                 </tbody>
             </Table>
-            <EditBook
+            {/* <EditBook
                 show={show}
                 hide={handleClose}
                 book={modalInfo}
-            />
+            /> */}
+            <Modal show={show} className='modal-form' onHide={handleClose}>
+                <Modal.Header className='modal-header'>
+                    <div className='closeButton' onClick={handleClose}>
+                        <span className='top'></span>
+                        <span className='bottom'></span>
+                    </div>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form >
+                        <Form.Group className='modal-form-field'>
+                            <Form.Label className='modal-label'>Book Name</Form.Label>
+                            <Form.Control
+                                className='modal-input-field'
+                                type="text"
+                                name="bookName"
+                                defaultValue={modalInfo.bookName}
+                                onChange={handleChange}
+                            />
+                         </Form.Group>
+                        <Form.Group className='modal-form-field'>
+                            <Form.Label className='modal-label'>Price</Form.Label>
+                            <Form.Control
+                                className='modal-input-field'
+                                type="text"
+                                name="price"
+                                defaultValue={modalInfo.price}
+                                onChange={handleChange}
+
+                            />
+                        </Form.Group>
+                        <Form.Group className='modal-form-field'>
+                            <Form.Label className='modal-label'>Author</Form.Label>
+                            <Form.Control
+                                className='modal-input-field'
+                                type="text"
+                                name="author"
+                                defaultValue={modalInfo.author}
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+                        <Form.Group className='modal-form-field'>
+                            <Form.Label className='modal-label'>Date</Form.Label>
+                            <Form.Control
+                                className='modal-input-field'
+                                type="text"
+                                name="date"
+                                defaultValue={modalInfo.date}
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer className="modal-form-field modal-button-field">
+                    <Button className="modal-button" onClick={handleClose}>Canel</Button>
+                    <Button className="modal-button" onClick={() => handleEdit(modalInfo.id)}>Confirm</Button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }

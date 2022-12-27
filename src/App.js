@@ -1,8 +1,17 @@
+import { Routes, Route,  } from 'react-router-dom';
 import FormComponent from './components/FormComponent';
+import UserTable from './components/UserTable';
 
 function App() {
   return (
-    <FormComponent/>
+
+      <Routes>
+        <Route path='/' element={<FormComponent/>} />
+        <Route path='usertable' element={ <UserTable/>} />
+      </Routes>
+      
+
+    
   );
 }
 

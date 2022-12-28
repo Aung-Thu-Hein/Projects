@@ -9,9 +9,7 @@ function App() {
         <Route path='/' element={<FormComponent/>} />
         <Route path='usertable' element={ <UserTable/>} />
       </Routes>
-      
 
-    
   );
 }
 

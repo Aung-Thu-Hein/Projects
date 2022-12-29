@@ -4,12 +4,10 @@ import UserTable from './components/UserTable';
 
 function App() {
   return (
-
       <Routes>
         <Route path='/' element={<FormComponent/>} />
         <Route path='usertable' element={ <UserTable/>} />
       </Routes>
-
   );
 }
 

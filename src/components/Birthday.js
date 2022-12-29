@@ -30,7 +30,7 @@ const Birthday = (props) => {
     useEffect( () => {
         calculateAge();
     },[props.birthday]);
-    console.log("prop disable: ", props.isDisable);
+    
     return (
         <Container>
             <Form.Group className="mb-3">

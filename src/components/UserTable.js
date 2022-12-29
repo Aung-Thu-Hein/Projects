@@ -6,10 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserTable = () => {
 
+    const [formData, setFormData] = useState([]); 
+
     const navigate = useNavigate();
     const navigateToForm = () => navigate('/');
-
-    const [formData, setFormData] = useState([]); 
+    
     useEffect(() => {
         const saved = localStorage.getItem("Form Data");
         const data = JSON.parse(saved);
@@ -17,9 +18,6 @@ const UserTable = () => {
             setFormData(data)
         }
     },[])
-
-    // const [user, setUser] = useState([{...formData}])
-    // console.log("user: ", user);
 
     return (
         <div>

@@ -2,32 +2,35 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useState } from 'react';
+import { useForm } from "react-hook-form";
+import { useCallback, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Birthday = (props) => {
+    
+    console.log("Props" ,props)
 
-    const [birthday, setBirthday] = useState("");
-	const [age, setAge] = useState("");
-    const [isDisable, setIsDisable] = useState(false);
-    const [birth, setBirth] = useState({birthday: "", age: ""});
+    const calculateAge = useCallback(() => {
+    	var today = new Date();
+    	var birthDate = new Date(props.birthday);
+    	var age_now = today.getFullYear() - birthDate.getFullYear();
+    	var m = today.getMonth() - birthDate.getMonth();
+    	if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    		age_now--;
+    	}
+        console.log("Calculated Age", age_now);
+        let age = age_now ? (JSON.stringify(age_now)) :  "";
+        props.changeAge(age)
+    },[props.birthday, props.age])
 
-    const calculateAge = (b) => {
+    const handleChange = (e) => {
+        props.changeBirth(e.target.value)
+    }
 
-		// setBirthday(e.target.value);
-		var today = new Date();
-		var birthDate = new Date(b);
-		var age_now = today.getFullYear() - birthDate.getFullYear();
-		var m = today.getMonth() - birthDate.getMonth();
-		if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-			age_now--;
-		}
-		// console.log("Age Now ", age_now);
-		setAge(JSON.stringify(age_now));
-		// console.log("Age", age);
-        setBirth({[birthday]: b, [age]:age_now});
-	}
-
+    useEffect( () => {
+        calculateAge();
+    },[props.birthday]);
+    console.log("prop disable: ", props.isDisable);
     return (
         <Container>
             <Form.Group className="mb-3">
@@ -36,18 +39,17 @@ const Birthday = (props) => {
                     <Col sm={3} className='me-5'>
                         <Form.Control
                             type="date"
-                            name="birthday"
-                            value={birthday}
-                            onChange={() => calculateAge(birthday)}
-                            disabled={props.isDisable} />
+                            value={props.birthday}
+                            onChange={handleChange}
+                            disabled={props.disabled} />
                     </Col>
                     <Col sm={2}><Form.Label>Age</Form.Label></Col>
                     <Col sm={3}>
                         <Form.Control
                             type="text"
                             name="age"
-                            value={age}
-                            disabled={props.isDisable}
+                            value={props.age}
+                            disabled={props.disabled}
                             readOnly />
                     </Col>
                 </Row>

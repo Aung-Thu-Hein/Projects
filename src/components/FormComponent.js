@@ -66,7 +66,6 @@ function FormComponent() {
 	}, [userData]);
 
 	const onSubmit = data => {
-		console.log(data);
 		setIsDisable(true);
 		const user = { age, birthday, ...data };
 		setForm({ ...user })

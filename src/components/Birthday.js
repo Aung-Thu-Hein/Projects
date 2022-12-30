@@ -15,7 +15,6 @@ const Birthday = (props) => {
     	if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
     		age_now--;
     	}
-        console.log("Calculated Age", age_now);
         let age = age_now ? (JSON.stringify(age_now)) :  "";
         props.changeAge(age)
     },[props.birthday, props.age])

@@ -36,7 +36,6 @@ const UserTable = () => {
         <tbody>
           {
             formData.map((data, index) => {
-              console.log("data:: ", data);
               return (
                 <tr key={index}>
                   <td>{data.userId}</td>

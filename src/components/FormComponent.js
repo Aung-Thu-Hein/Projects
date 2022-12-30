@@ -6,30 +6,28 @@ import Col from 'react-bootstrap/Col';
 import * as Yup from 'yup';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { get, set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Birthday from './Birthday';
 
 const schema = Yup.object().shape({
-
 	userName: Yup
 		.string()
 		.required("User name is required"),
-
 	gender: Yup
 		.string()
 		.required("gender is required"),
-
-
 	email: Yup
 		.string()
 		.email("Invalid email format")
 		.required("Email is required"),
-
 	address: Yup
 		.string()
 		.required("Address is required"),
+  userRole: Yup
+    .string()
+    .required("User role is required"),
 
 })
 
@@ -50,11 +48,7 @@ function FormComponent() {
 		const userLength = Object.keys(userData).length;
 		if (data) {
 			data = JSON.parse(data);
-			if (data.length > 9) {
-				setValue('userId', 'ID-00' + `${data.length + 1}`)
-			} else if (data.length > 99) {
-				setValue('userId', 'ID-0' + `${data.length + 1}`)
-			} else setValue('userId', 'ID-000' + `${data.length + 1}`)
+      setValue('userId', 'ID-' + `${(data.length + 1).toString().padStart(4,'0')}`)
 			if (userLength) {
 				let newData = [...data, userData]
 				localStorage.setItem("Form Data", JSON.stringify(newData));
@@ -118,6 +112,7 @@ function FormComponent() {
 								<Form.Check
 									{...register('gender')}
 									label="Male"
+                  id="male"
 									type="radio"
 									value="Male"
 									disabled={isDisable}
@@ -131,6 +126,7 @@ function FormComponent() {
 								<Form.Check
 									{...register('gender')}
 									label="Female"
+                  id="female"
 									type="radio"
 									value="Female"
 									disabled={isDisable}

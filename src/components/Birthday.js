@@ -2,13 +2,10 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useForm } from "react-hook-form";
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Birthday = (props) => {
-    
-    console.log("Props" ,props)
 
     const calculateAge = useCallback(() => {
     	var today = new Date();
